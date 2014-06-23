@@ -8,6 +8,7 @@ genericusers_groups:
 
 # Used by Ansibles.generics-users
 
+# NOTE: Generate crypted passwords with invoke genpass
 genericusers_users:
   - name: vagrant
     pass: satrF5fwANvrQ
@@ -19,31 +20,26 @@ genericusers_users:
     - admin
     append: no
     ssh_keys:
-      - CHANGEME_SSH_KEY
-  - name: CHANGEME_username
-    pass: CHANGE_password
-    comment: CHANGEME_comment
+      - "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  - name: sloria
+    pass: $5$rounds=110000$9H7QADTvlb32CW2N$KHFTQswteyy6tduWI4EAeWhoFGWu28S8IgqUIboYqZA
+    comment: 'vagrant'
     uid: 2000
     shell: /bin/bash
     groups:
-    - adm
-    - sudo
+    - vagrant
     - admin
-    - staff
-    append: yes
-    # Set your key here
-    # You can use a file like so:
-    # "{{ lookup('file', '/Users/you/.ssh/id_rsa.pub') }}"
+    append: no
     ssh_keys:
-      - CHANGEME_SSH_KEY
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6D05yHt+UeRI6YAAjnU1yHLS02wVOAIAHnGE3U7axrJdDn49ft94/CNqMqxWo9lDS7VoaxtBQfVZioqRdN+PuCB5lc6hJ1M5oRC+8YN1g8javLUygL7U80VDcSBd/2L5wJI572tJBEUg2R1Syume5RgVIbN2ieEY82AU0TDZZvN1VM0Be7+wSXs1u6Czzq5qulH9GyuJfr83vPmvEW+FIGj1rbR/+t/ghbc/38GZnAvpxWZvi9i4mEV5GME2UqSwiNdE75yMLI89BC/hHymKP5BhQNg1i6MjWchx+PwWrnmyECtuuUbbrDFd6bHlJfKwXA5L8FxjMnHC0NmaQ+5AX sloria@stevens-air
 
 
 # --- csf
 csf_allowed_ips:
-  - CHANGEME
-csf_ui_user: CHANGEME
-csf_ui_password: CHANGEME
+csf_lf_alert_to: ""
+csf_lf_alert_from: ""
 
+csf_lf_sshd_perm: 30
 
 # --- rkhunter
 
@@ -52,3 +48,6 @@ rkhunter_mail_on_warnings: ""
 
 # Once rkhunter has been installed and updated the first time, set this to "no"
 rkhunter_propupd: yes
+rkhunter_update: yes
+rkhunter_update_apt: yes
+rkhunter_run_checks: yes

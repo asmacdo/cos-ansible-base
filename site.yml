@@ -8,3 +8,22 @@
 
 - include: common.yml
 - include: security.yml
+
+# Set up webservers
+- name: Provision webservers
+  hosts: webservers
+  roles:
+    - role: uwsgi
+    - role: nginx
+
+
+- name: Set up sentry
+  hosts: sentry
+  roles:
+    - role: sentry
+
+
+- name: Set up elasticsearch
+  hosts: elasticsearch
+  roles:
+    - role: elasticsearch
