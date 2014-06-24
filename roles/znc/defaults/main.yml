@@ -1,0 +1,22 @@
+#######################################
+#Install config
+
+znc_version: "1.4"
+
+znc_user_name: vagrant
+
+znc_dir: "/home/vagrant/.znc"
+
+znc_port: 5001
+
+znc_config: "{{ znc_dir }}/configs"
+
+#######################################
+#Admin defaults
+
+znc_admin: "znc-admin"
+
+#Hashed password, password is "password"
+znc_admin_pass: "password"
+
+irc_server: holmes.freenode.net 6667

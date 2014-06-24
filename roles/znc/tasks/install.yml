@@ -1,0 +1,31 @@
+
+- name: install apt dependencies
+  apt: pkg={{ item }}
+  with_items:
+    - build-essential 
+    - libssl-dev 
+    - libperl-dev 
+    - pkg-config
+
+- name: Get the znc tarball
+  command: "wget http://znc.in/releases/znc-{{znc_version}}.tar.gz chdir=/usr/local/src"
+  sudo: yes
+
+- name: Extract ZNC
+  command: tar -xzvf znc-{{znc_version}}.tar.gz chdir=/usr/local/src
+  sudo: yes
+
+
+- name: Configure znc
+  command: "./configure chdir=/usr/local/src/znc-{{znc_version}}"
+  sudo: yes
+
+
+- name: Make znc
+  command: "make chdir=/usr/local/src/znc-{{znc_version}}"
+  sudo: yes
+
+
+- name: Compile znc
+  command: "make install chdir=/usr/local/src/znc-{{znc_version}}"
+  sudo: yes

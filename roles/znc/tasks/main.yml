@@ -1,0 +1,23 @@
+# source: https://www.digitalocean.com/community/tutorials/how-to-install-znc-an-irc-bouncer-on-an-ubuntu-vps
+- name: Check if znc is already installed
+  command: which znc 
+  register: znc_check
+  ignore_errors: yes
+
+- name: Install znc if not installed
+  include: install.yml
+  when: not znc_check.stdout
+
+- name: Create config directory
+  file: dest=/home/vagrant/.znc/ state=directory group=znc_users owner=vagrant
+
+- name: Create config directory
+  file: dest=/home/vagrant/.znc/configs state=directory group=znc_users owner=vagrant
+
+- name: Template ZNC config file
+  template: src=znc_config.j2 dest=/home/vagrant/.znc/configs/znc.conf group=znc_users owner=vagrant
+
+- name: Create znc.pem
+  remote_user: vagrant
+  command: znc --makepem
+  sudo: no

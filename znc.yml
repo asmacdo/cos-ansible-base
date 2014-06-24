@@ -1,0 +1,10 @@
+#- name: Collecting fact
+#  hosts: znc 
+ # gather_facts: yes
+
+## - include: common.yml
+
+- name: ZNC Setup
+  hosts: znc
+  roles:
+    - znc

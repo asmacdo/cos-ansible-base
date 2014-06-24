@@ -27,3 +27,8 @@
   hosts: elasticsearch
   roles:
     - role: elasticsearch
+
+- name: Set up ZNC
+  hosts: znc
+  roles:
+    - role: znc
