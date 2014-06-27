@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import getpass
 from invoke import run, task
 
 VAGRANT_INVENTORY = 'vagranthosts'
