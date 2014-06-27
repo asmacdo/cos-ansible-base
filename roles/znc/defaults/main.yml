@@ -5,7 +5,7 @@ znc_version: "1.4"
 
 znc_user_name: vagrant
 
-znc_dir: "/home/vagrant/.znc"
+znc_dir: "/home/{{ znc_user_name }}/.znc"
 
 znc_port: 5001
 
@@ -20,3 +20,5 @@ znc_admin: "znc-admin"
 znc_admin_pass: "password"
 
 irc_server: holmes.freenode.net 6667
+
+irc_channel: "#openscience"

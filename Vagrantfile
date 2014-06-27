@@ -50,6 +50,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # end
   end
 
+  config.vm.define "znc" do |znc|
+    ip_end = "222"
+    ssh_port = '2222'
+
+    znc.vm.box = BOX_IMAGE
+    znc.vm.hostname = "vagrant-znc"
+    znc.vm.network :forwarded_port, guest: 22, host: ssh_port
+    znc.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
+
+  end
+
 
 
 end

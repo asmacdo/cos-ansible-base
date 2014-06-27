@@ -9,13 +9,13 @@
   when: not znc_check.stdout
 
 - name: Create config directory
-  file: dest=/home/vagrant/.znc/ state=directory group=znc_users owner=vagrant
+  file: dest=/home/vagrant/.znc/ state=directory owner=vagrant
 
 - name: Create config directory
-  file: dest=/home/vagrant/.znc/configs state=directory group=znc_users owner=vagrant
+  file: dest=/home/vagrant/.znc/configs state=directory owner=vagrant
 
 - name: Template ZNC config file
-  template: src=znc_config.j2 dest=/home/vagrant/.znc/configs/znc.conf group=znc_users owner=vagrant
+  template: src=znc_config.j2 dest=/home/vagrant/.znc/configs/znc.conf owner=vagrant
 
 - name: Create znc.pem
   remote_user: vagrant
