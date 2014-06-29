@@ -5,7 +5,7 @@
 ## - include: common.yml
 
 - name: Collecting facts
-  hosts: all
+  hosts: znc
   gather_facts: yes
 
 - include: common.yml

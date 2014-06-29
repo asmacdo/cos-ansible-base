@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ssh_port = '2222'
     webserver.vm.hostname = "vagrant-webserver"
     webserver.vm.box = BOX_IMAGE
-    webserver.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end#
+    webserver.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
 
     # webserver.vm.provision :ansible do |ansible|
     #   ansible.playbook = "site.yml"

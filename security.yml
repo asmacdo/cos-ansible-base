@@ -1,6 +1,6 @@
 
 - name: Common Ubuntu security
-  hosts: all
+  hosts: znc
   roles:
     - role: csf
     - role: chkrootkit
