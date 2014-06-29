@@ -15,30 +15,30 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Set up multiple servers for different services
 
 
-#  config.vm.define "webserver" do |webserver|
-#    ip_end = "222"
-#    ssh_port = '2222'
-#    webserver.vm.hostname = "vagrant-webserver"
-#    webserver.vm.box = BOX_IMAGE
-#    webserver.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end#
-#
-#    # webserver.vm.provision :ansible do |ansible|
-#    #   ansible.playbook = "site.yml"
+  config.vm.define "webserver" do |webserver|
+    ip_end = "222"
+    ssh_port = '2222'
+    webserver.vm.hostname = "vagrant-webserver"
+    webserver.vm.box = BOX_IMAGE
+    webserver.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end#
+
+    # webserver.vm.provision :ansible do |ansible|
+    #   ansible.playbook = "site.yml"
     #   ansible.inventory_path = "vagranthosts"
     #   ansible.sudo = true
     #   ansible.limit = "vagrantbox"
     # end
-#  end
+  end
 
 
-#  config.vm.define "elasticsearch" do |elastic|
-#    ip_end = "333"
-#    ssh_port = '2223'
-#
-#    elastic.vm.box = BOX_IMAGE
-#    elastic.vm.hostname = "vagrant-elasticsearch"
-#    elastic.vm.network :forwarded_port, guest: 22, host: ssh_port
-#    elastic.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
+  config.vm.define "elasticsearch" do |elastic|
+    ip_end = "333"
+    ssh_port = '2223'
+
+    elastic.vm.box = BOX_IMAGE
+    elastic.vm.hostname = "vagrant-elasticsearch"
+    elastic.vm.network :forwarded_port, guest: 22, host: ssh_port
+    elastic.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
 
 
     # elastic.vm.provision :ansible do |ansible|
@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #   ansible.sudo = true
     #   ansible.limit = "elasticsearch"
     # end
-#  end
+  end
 
   config.vm.define "znc" do |znc|
     ip_end = "111"
@@ -60,7 +60,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     znc.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
 
   end
-
-
-
 end
