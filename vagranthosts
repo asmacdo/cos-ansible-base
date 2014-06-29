@@ -1,17 +1,17 @@
 [vagrantbox]
 192.168.111.111
 
-[nginx]
-192.168.111.222
+#[nginx]
+#192.168.111.222
 
-[webservers]
-192.168.111.222
+#[webservers]
+#192.168.111.222
 
-[elasticsearch]
-127.0.0.1:2200
+#[elasticsearch]
+#127.0.0.1:2200
 
-[webservers:children]
+#[webservers:children]
+#vagrantbox
+
+[znc:children]
 vagrantbox
-
-[znc]
-192.168.111.222

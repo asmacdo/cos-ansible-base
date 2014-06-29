@@ -4,6 +4,13 @@
 
 ## - include: common.yml
 
+- name: Collecting facts
+  hosts: all
+  gather_facts: yes
+
+- include: common.yml
+- include: security.yml
+
 - name: ZNC Setup
   hosts: znc
   roles:

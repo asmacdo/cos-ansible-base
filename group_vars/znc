@@ -26,6 +26,7 @@ csf_allowed_ips:
 csf_ui_user: CHANGEME
 csf_ui_password: CHANGEME
 check_csf: no
+csf_tcp_out: "80,443,5001,6667"
 
 # --- rkhunter
 
