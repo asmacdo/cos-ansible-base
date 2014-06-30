@@ -8,7 +8,7 @@ genericusers_groups:
 # Used by Ansibles.generics-users
 
 genericusers_users:
-  - name: znc 
+  - name: znc
     pass: satrF5fwANvrQ
     comment: 'vagrant'
     uid: 1000
