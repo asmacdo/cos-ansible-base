@@ -2,6 +2,8 @@
 
 # --- users and groups
 
+hostname_name: acdc
+
 genericusers_groups:
     - name: "admin"
 
@@ -9,24 +11,23 @@ genericusers_groups:
 
 genericusers_users:
   - name: znc
-    pass: satrF5fwANvrQ
-    comment: 'vagrant'
-    uid: 1000
+    pass: $5$rounds=110000$rsVSFt2B6adUN4mR$eAxgVlyGWsdrGPZyKwrK.f3rEnI0R//I3V3wwIsR70/
+    comment: 'nohintavailable'
+    uid: 1003
     shell: /bin/bash
     groups:
     - admin
     - sudo
-    append: no
+    append: yes
     ssh_keys:
-        - "{{ lookup('file', '/Users/Austin/.ssh/id_rsa.pub') }}"
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHYfa6o5Xtx2+toDmTqc6qJCZgI/Dp4WWsjBupV14UMp1IsOW/8BDqKUecT1Ri8BaZFqG9uGRtuzDzmBkQcJCbxAnO1ijjUImfO0CmBkqc/Pij+D96qL4R0BPC1BebrgtrqEfXphtIUaXLd6wkQAWargu8tg6g7xfHdcXZ1jfsOubBp2CMrybkbs3cIonfaO7yEb/E+3fPCqh6IpN8iWYfwJJ+Y0Dkb55l+h2S0mQ1t007AfCeh7tI/fYCIkvmZignawV4CgzEeA58xU7NtWyfazrDH2mTAO3+me77mKKpUfgSHlot5/jnlnGLHozjVXgsS6l69AbS99lV9Q4ZXlPf Austin@Harrys-MacBook-Air.local"
 
 # --- csf
 csf_allowed_ips:
   - 127.0.0.1
-csf_ui_user: CHANGEME
-csf_ui_password: CHANGEME
 check_csf: no
 csf_tcp_out: "80,443,5001,6667"
+csf_tcp_in: "22,5001"
 
 # --- rkhunter
 

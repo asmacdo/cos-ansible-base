@@ -3,7 +3,7 @@
 
 znc_version: "1.4"
 
-znc_user_name: vagrant
+znc_user_name: znc
 
 znc_dir: "/home/{{ znc_user_name }}/.znc"
 

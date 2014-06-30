@@ -9,18 +9,17 @@
   when: not znc_check.stdout
 
 - name: Create config directory
-  file: dest=/home/vagrant/.znc/ state=directory owner=vagrant
+  file: dest=/home/{{znc_user_name}}/.znc/ state=directory owner={{znc_user_name}}
 
 - name: Create config directory
-  file: dest=/home/vagrant/.znc/configs state=directory owner=vagrant
+  file: dest=/home/{{znc_user_name}}/.znc/configs state=directory owner={{znc_user_name}}
 
 - name: Template ZNC config file
-  template: src=znc_config.j2 dest=/home/vagrant/.znc/configs/znc.conf owner=vagrant
+  template: src=znc_config.j2 dest=/home/{{znc_user_name}}/.znc/configs/znc.conf owner={{znc_user_name}}
 
 - name: Create znc.pem
-  remote_user: vagrant
   command: znc --makepem
-  sudo: no
+  sudo: user
 
 - name: Run ZNC
   command: znc

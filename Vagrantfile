@@ -37,7 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     elastic.vm.box = BOX_IMAGE
     elastic.vm.hostname = "vagrant-elasticsearch"
-    elastic.vm.network :forwarded_port, guest: 22, host: ssh_port
+    #elastic.vm.network :forwarded_port, guest: 22, host: ssh_port
     elastic.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
 
 
@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     znc.vm.box = BOX_IMAGE
     znc.vm.hostname = "vagrant-znc"
-    znc.vm.network :forwarded_port, guest: 22, host: ssh_port
+    #znc.vm.network :forwarded_port, guest: 22, host: ssh_port
     znc.vm.network :private_network, ip: BOX_IP_ZONE + "." + ip_end
 
   end
