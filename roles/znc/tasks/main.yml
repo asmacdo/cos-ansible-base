@@ -17,10 +17,13 @@
 - name: Template ZNC config file
   template: src=znc_config.j2 dest=/home/{{znc_user_name}}/.znc/configs/znc.conf owner={{znc_user_name}}
 
-- name: Create znc.pem
-  command: znc --makepem
-  sudo: user
+- name: Make pem
+  sudo_user: "{{ znc_user_name }}"
+  command: znc --makepem --datadir /home/{{znc_user_name}}/.znc
 
 - name: Run ZNC
-  command: znc
-  sudo: no
+  sudo_user: "{{ znc_user_name }}"
+  command: znc  --datadir /home/{{znc_user_name}}/.znc
+
+- name: Install Kiwi
+  include: kiwi.yml
