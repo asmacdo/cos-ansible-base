@@ -1,0 +1,4 @@
+- name: Kiwi Fake Setup
+  hosts: znc
+  roles:
+    - role: kiwi

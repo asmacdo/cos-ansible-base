@@ -1,0 +1,7 @@
+- name: Create config directory
+  file: dest=/home/{{znc_user_name}}/KiwiIRC
+
+- name: Checkout git repo
+  git: repo=https://github.com/asmacdo/KiwiIRC.git
+       dest=/home/{{ znc_user_name }}/
+       version=development
