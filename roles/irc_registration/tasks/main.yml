@@ -1,0 +1,5 @@
+- name: Install ZNC Admin
+  include: znc_admin
+
+- name: Deploy ZNC Admin
+  include: deploy

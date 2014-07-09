@@ -1,0 +1,21 @@
+#- name: Install Requirements
+#  sudo: yes
+#  apt: pkg={{item}}
+#  with_items:
+#    - git-core
+#    - npm
+#    - nodejs-legacy
+
+- name: Clone git repo
+  sudo_user: znc
+  git: repo=https://github.com/kmjungersen/znc_admin.git
+       dest=/home/znc/znc_admin
+
+#- name: Template Kiwi config file
+#  template: src=config_js.j2 dest=/home/znc/KiwiIRC/config.js owner=znc
+
+#- name: Install js depenencies
+#  sudo_user: znc
+#  args:
+#    chdir: /home/znc/KiwiIRC
+#  command: npm install

@@ -1,0 +1,11 @@
+server {
+    listen 80;
+    server_name {{ hostname_name }};
+
+    access_log {{ nginx_log_dir }}/default.access.log
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix://{{ uwsgi_sock }};
+    }
+}

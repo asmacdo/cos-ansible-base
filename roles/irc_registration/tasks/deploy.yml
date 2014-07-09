@@ -1,0 +1,62 @@
+- name: Create uwsgi log files directory
+  sudo: yes
+  file:
+    path: /var/log/uwsgi/
+    state: directory
+    owner: "{{ znc_user }}"
+
+- name: Create socket directory
+  sudo: yes
+  file:
+    path: /run/uwsgi/
+    state: directory
+    owner: "{{ znc_user }}"
+
+- name: Copy Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_dir }}/sites-available/default"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy uwsgi configuration
+  template:
+    src: uwsgi.ini.j2
+    dest: "{{ flask_dir }}/uwsgi.ini"
+    owner: root
+    group: root
+    mode: 0644
+  tags: update
+
+- name: Check if managed by Supervisor
+  supervisorctl: name=archiverforeman state=present
+  register: foreman_is_managed
+  ignore_errors: true
+
+- name: Add to Supervisor
+  template:
+    src: archiverforeman.conf.j2
+    dest: /etc/supervisor/conf.d/archiverforeman.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: 'foreman_is_managed is not defined or foreman_is_managed|failed'
+  tags: update
+
+- name: Reload Supervisor
+  supervisorctl:
+    name: archiverforeman
+    state: present
+
+- name: Restart foreman
+  supervisorctl:
+    name: archiverforeman
+    state: restarted
+  tags: update
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+  tags: update

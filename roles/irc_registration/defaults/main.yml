@@ -1,0 +1,11 @@
+nginx_dir: "/etc/nginx/"
+
+znc_user: znc
+
+uwsgi_sock: /run/uwsgi/uwsgi.sock
+
+znc_admin_username: znc-admin
+
+znc_admin_password: password
+
+znc_ip_address: 107.170.134.161/
