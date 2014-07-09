@@ -25,5 +25,5 @@
   sudo_user: "{{ znc_user_name }}"
   command: znc  --datadir /home/{{znc_user_name}}/.znc
 
-- name: Install Kiwi
+- name: Install  and Run Kiwi
   include: kiwi.yml

@@ -1,7 +1,32 @@
-- name: Create config directory
-  file: dest=/home/{{znc_user_name}}/KiwiIRC
+- name: Install Requirements
+  sudo: yes
+  apt: pkg={{item}}
+  with_items:
+    - git-core
+    - npm
+    - nodejs-legacy
 
-- name: Checkout git repo
+- name: Clone git repo
+  sudo_user: znc
   git: repo=https://github.com/asmacdo/KiwiIRC.git
-       dest=/home/{{ znc_user_name }}/
+       dest=/home/znc/KiwiIRC
        version=development
+
+- name: Template Kiwi config file
+  template: src=config_js.j2 dest=/home/znc/KiwiIRC/config.js owner=znc
+
+- name: Install js depenencies
+  sudo_user: znc
+  args:
+    chdir: /home/znc/KiwiIRC
+  command: npm install
+
+- name: Build Kiwi
+  args:
+    chdir: /home/znc/KiwiIRC/
+  command: ./kiwi build
+
+- name: Start Kiwi
+  args:
+    chdir: /home/znc/KiwiIRC/
+  command: ./kiwi start

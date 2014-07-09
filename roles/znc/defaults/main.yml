@@ -7,9 +7,13 @@ znc_user_name: znc
 
 znc_dir: "/home/{{ znc_user_name }}/.znc"
 
+znc_ip_address: 107.170.134.161
+
 znc_port: 5001
 
 znc_config: "{{ znc_dir }}/configs"
+
+znc_max_users: 100
 
 #######################################
 #Admin defaults
@@ -21,4 +25,4 @@ znc_admin_pass: "password"
 
 irc_server: holmes.freenode.net 6667
 
-irc_channel: "#openscience"
+default_irc_channel: "#cos"
