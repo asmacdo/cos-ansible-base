@@ -1,0 +1,9 @@
+[program:znc_admin]
+directory={{ flask_dir }}
+command={{ virtualenv_path }}/bin/uwsgi uwsgi.ini
+user={{ znc_user }}
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/znc_admin/znc_admin.stdout.log
+stderr_logfile=/var/log/znc_admin/znc_admin.stderr.log
+environment=PATH="{{ virtualenv_path }}/bin"

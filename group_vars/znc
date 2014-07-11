@@ -27,7 +27,7 @@ csf_allowed_ips:
   - 127.0.0.1
 check_csf: no
 csf_tcp_out: "80,443,4001,5000,5001,6667,7778"
-csf_tcp_in: "22,4001,5000,5001,7778"
+csf_tcp_in: "22,80,4001,5000,5001,7778"
 
 # --- rkhunter
 

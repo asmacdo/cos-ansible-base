@@ -1,4 +1,4 @@
-nginx_dir: "/etc/nginx/"
+nginx_dir: "/etc/nginx"
 
 znc_user: znc
 
@@ -8,4 +8,10 @@ znc_admin_username: znc-admin
 
 znc_admin_password: password
 
-znc_ip_address: 107.170.134.161/
+znc_server_ip: 107.170.134.161/
+
+virtualenv_path: /envs/znc_admin
+
+flask_dir: "/home/znc/znc_admin"
+
+nginx_log_dir: "/var/log/nginx"

@@ -1,3 +1,9 @@
+- name: Create log files directory
+  file:
+    path: /var/log/znc_admin/
+    state: directory
+    owner: "{{ znc_user }}"
+
 - name: Create uwsgi log files directory
   sudo: yes
   file:
@@ -30,33 +36,47 @@
   tags: update
 
 - name: Check if managed by Supervisor
-  supervisorctl: name=archiverforeman state=present
-  register: foreman_is_managed
+  supervisorctl: name=znc_admin state=present
+  register: znc_admin_is_managed
   ignore_errors: true
+
+- name: make supervisor dir
+  file:
+    path: /etc/supervisor/conf.d/
+    state: directory
+    recurse: yes
 
 - name: Add to Supervisor
   template:
-    src: archiverforeman.conf.j2
-    dest: /etc/supervisor/conf.d/archiverforeman.conf
+    src: znc_admin_conf.j2
+    dest: /etc/supervisor/conf.d/znc_admin.conf
     owner: root
     group: root
     mode: 0644
-  when: 'foreman_is_managed is not defined or foreman_is_managed|failed'
-  tags: update
+  when: 'znc_admin_is_managed is not defined or znc_admin_is_managed|failed'
 
 - name: Reload Supervisor
   supervisorctl:
-    name: archiverforeman
+    name: znc_admin
     state: present
 
-- name: Restart foreman
+- name: Start znc_admin
   supervisorctl:
-    name: archiverforeman
+    name: znc_admin
+    state: started
+
+- name: Restart znc_admin
+  supervisorctl:
+    name: znc_admin
     state: restarted
-  tags: update
 
 - name: Restart Nginx
   service:
     name: nginx
     state: restarted
-  tags: update
+
+- name: Open uwsgi permissions
+  sudo: yes
+  file:
+    path: /run/uwsgi/uwsgi.sock
+    mode: 664

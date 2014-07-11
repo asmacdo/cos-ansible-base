@@ -8,3 +8,7 @@
 
 - name: Ensure virtualenv is installed
   pip: name=virtualenv state=present
+
+- name: Create virtualenv
+  command: creates={{ virtualenv_path }}/bin/python
+           virtualenv {{ virtualenv_path }}
