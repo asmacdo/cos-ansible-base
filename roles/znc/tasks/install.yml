@@ -6,11 +6,6 @@
     - libssl-dev
     - pkg-config
 
-#- name: install apt dependencies (libssl-dev
-#  apt: pkg={{ item }}
-#  with_items:
-#    - libssl-dev
-
 - name: Get the znc tarball
   command: "wget http://znc.in/releases/znc-{{znc_version}}.tar.gz chdir=/usr/local/src"
   sudo: yes

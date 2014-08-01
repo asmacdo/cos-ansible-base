@@ -8,7 +8,8 @@ znc_admin_username: znc-admin
 
 znc_admin_password: password
 
-znc_server_ip: 107.170.134.161
+# znc_server_ip: 107.170.134.161
+znc_server_ip: 192.168.111.224
 
 virtualenv_path: /envs/znc_admin
 

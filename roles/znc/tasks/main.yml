@@ -28,6 +28,7 @@
 - name: Run ZNC
   sudo_user: "{{ znc_user_name }}"
   command: znc  --datadir /home/{{znc_user_name}}/.znc
+  when: not znc_check.stdout
 
 - name: Install  and Run Kiwi
   include: kiwi.yml

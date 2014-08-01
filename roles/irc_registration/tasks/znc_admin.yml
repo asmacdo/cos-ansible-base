@@ -8,6 +8,7 @@
   sudo_user: znc
   git: repo=https://github.com/kmjungersen/znc_admin.git
        dest=/home/znc/znc_admin
+       version=dev
 
 - name: Template admin config file
   template: src=znc_settings_conf.j2 dest=/home/znc/znc_admin/znc_settings.conf owner=znc
