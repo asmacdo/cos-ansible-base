@@ -1,5 +1,5 @@
 #- name: Collecting fact
-#  hosts: znc 
+#  hosts: znc
  # gather_facts: yes
 
 ## - include: common.yml
@@ -8,7 +8,13 @@
   hosts: znc
   gather_facts: yes
 
-- name: ZNC Setup
+# - name: ZNC Setup
+#   hosts: znc
+#   roles:
+#     - znc
+
+- name: Irc Registration
   hosts: znc
   roles:
-    - znc
+    - role: Ansibles.generic-users
+    - role: irc_registration

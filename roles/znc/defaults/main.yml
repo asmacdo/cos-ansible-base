@@ -23,6 +23,6 @@ znc_admin: "znc-admin"
 #Hashed password, password is "password"
 znc_admin_pass: "password"
 
-irc_server: holmes.freenode.net 6667
+irc_server: chat.freenode.net 6667
 
 default_irc_channel: "#cos"

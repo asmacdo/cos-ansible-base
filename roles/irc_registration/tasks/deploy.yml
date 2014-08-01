@@ -17,6 +17,7 @@
     path: /run/uwsgi/
     state: directory
     owner: "{{ znc_user }}"
+    mode: 0755
 
 - name: Copy Nginx configuration
   template:
@@ -48,7 +49,7 @@
 
 - name: Add to Supervisor
   template:
-    src: znc_admin_conf.j2
+    src: znc_admin_supervisor.j2
     dest: /etc/supervisor/conf.d/znc_admin.conf
     owner: root
     group: root
@@ -79,4 +80,4 @@
   sudo: yes
   file:
     path: /run/uwsgi/uwsgi.sock
-    mode: 664
+    mode: 775

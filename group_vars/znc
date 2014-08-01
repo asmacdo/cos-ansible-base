@@ -11,8 +11,8 @@ genericusers_groups:
 
 genericusers_users:
   - name: znc
-    pass: $5$rounds=110000$rsVSFt2B6adUN4mR$eAxgVlyGWsdrGPZyKwrK.f3rEnI0R//I3V3wwIsR70/
-    comment: 'nohintavailable'
+    pass: $5$rounds=110000$oBOAKY/cS7jGIt6e$Cl2Yvz9VJH6gUv26VzzuC3uOEzdrAKCFRXYMaRvSCY2
+    comment: 'password'
     uid: 1003
     shell: /bin/bash
     groups:

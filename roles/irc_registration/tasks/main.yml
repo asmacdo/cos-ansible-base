@@ -1,5 +1,5 @@
-#- name: Install ZNC Admin
-#  include: znc_admin.yml
+- name: Install ZNC Admin
+  include: znc_admin.yml
 
 - name: Deploy ZNC Admin
   include: deploy.yml

@@ -33,10 +33,7 @@
   roles:
     - role: znc
 
-#- name: Setup Kiwi
-#  hosts: znc
-#  roles:
-#    - role: kiwi
-
-
-#Setup Flask
+- name: Setup Flask App
+  hosts: znc
+  roles:
+    - role: irc_registration

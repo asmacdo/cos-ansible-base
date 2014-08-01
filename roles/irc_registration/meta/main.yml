@@ -1,5 +1,5 @@
-#dependencies:
-#  - {role: nginx }
-#  - {role: uwsgi }
-#  - {role: python }
-#  - {role: supervisor }
+dependencies:
+  - {role: nginx }
+  - {role: uwsgi }
+  - {role: python }
+  - {role: supervisor }

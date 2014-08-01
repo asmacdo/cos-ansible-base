@@ -10,9 +10,14 @@
        dest=/home/znc/znc_admin
 
 - name: Template admin config file
-  template: src=local_py.j2 dest=/home/znc/znc_admin/local.py owner=znc
+  template: src=znc_settings_conf.j2 dest=/home/znc/znc_admin/znc_settings.conf owner=znc
+
+- name: Get virtualenv permission
+  sudo: yes
+  command: chown -R {{ znc_user}} {{ virtualenv_path}}
 
 - name: install pip requirements
+  sudo_user: znc
   pip:
     virtualenv: "{{ virtualenv_path }}"
     requirements: /home/znc/znc_admin/requirements.txt

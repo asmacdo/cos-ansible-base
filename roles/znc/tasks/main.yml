@@ -15,7 +15,11 @@
   file: dest=/home/{{znc_user_name}}/.znc/configs state=directory owner={{znc_user_name}}
 
 - name: Template ZNC config file
-  template: src=znc_config.j2 dest=/home/{{znc_user_name}}/.znc/configs/znc.conf owner={{znc_user_name}}
+  template:
+    src: znc_config.j2
+    dest: /home/{{znc_user_name}}/.znc/configs/znc.conf
+    owner: "{{znc_user_name}}"
+    mode: 0755
 
 - name: Make pem
   sudo_user: "{{ znc_user_name }}"
