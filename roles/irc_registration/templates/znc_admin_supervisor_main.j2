@@ -1,0 +1,8 @@
+[program:znc_admin_main]
+directory={{ flask_dir }}
+command={{ virtualenv_path }}/bin/python main.py
+user={{ znc_user }}
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/znc_admin/znc_admin_main.stdout.log
+stderr_logfile=/var/log/znc_admin/znc_admin_main.stderr.log

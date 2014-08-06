@@ -45,3 +45,53 @@ LoadModule = webadmin
             Server     = {{ irc_server }}
     </Network>
 </User>
+
+<User ZNC-RegBot>
+    Pass       = password
+    Admin      = true
+    Nick       = ZNC-RegBot
+    AltNick    = ZNC-RegBot_
+    Ident      = ZNC-RegBot
+    RealName   = Got ZNC?
+    Buffer     = 50
+    AutoClearChanBuffer = true
+    ChanModes  = +stn
+
+    LoadModule = controlpanel
+
+    <Network freenode>
+            LoadModule = chansaver
+            LoadModule = keepnick
+            LoadModule = kickrejoin
+            LoadModule = nickserv
+            LoadModule = perform
+            LoadModule = simple_away
+
+            Server     = {{ irc_server }}
+    </Network>
+</User>
+
+<User USERTOCLONE>
+    Pass       = password
+    Admin      = true
+    Nick       = USERTOCLONE
+    AltNick    = USERTOCLONE
+    Ident      = USERTOCLONE
+    Buffer     = 50
+    AutoClearChanBuffer = true
+    ChanModes  = +stn
+
+    LoadModule = controlpanel
+
+    <Network freenode>
+           LoadModule = chansaver
+           LoadModule = keepnick
+           LoadModule = kickrejoin
+           LoadModule = nickserv
+           LoadModule = perform
+           LoadModule = simple_away
+
+           Server     = {{ irc_server }}
+    </Network>
+</User>
+

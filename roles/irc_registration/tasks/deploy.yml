@@ -47,7 +47,7 @@
     state: directory
     recurse: yes
 
-- name: Add to Supervisor
+- name: Add app to Supervisor
   template:
     src: znc_admin_supervisor.j2
     dest: /etc/supervisor/conf.d/znc_admin.conf
@@ -56,9 +56,23 @@
     mode: 0644
   when: 'znc_admin_is_managed is not defined or znc_admin_is_managed|failed'
 
+- name: Add bot to Supervisor
+  template:
+    src: znc_admin_supervisor_main.j2
+    dest: /etc/supervisor/conf.d/znc_admin_main.conf
+    owner: root
+    group: root
+    mode: 0644
+  # when: 'znc_admin_is_managed is not defined or znc_admin_is_managed|failed'
+
 - name: Reload Supervisor
   supervisorctl:
     name: znc_admin
+    state: present
+
+- name: Reload Supervisor
+  supervisorctl:
+    name: znc_admin_main
     state: present
 
 - name: Start znc_admin
@@ -66,9 +80,19 @@
     name: znc_admin
     state: started
 
+- name: Start flask bot
+  supervisorctl:
+    name: znc_admin_main
+    state: started
+
 - name: Restart znc_admin
   supervisorctl:
     name: znc_admin
+    state: restarted
+
+- name: Restart flask bot
+  supervisorctl:
+    name: znc_admmin_main
     state: restarted
 
 - name: Restart Nginx

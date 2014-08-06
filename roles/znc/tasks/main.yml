@@ -1,6 +1,6 @@
 # source: https://www.digitalocean.com/community/tutorials/how-to-install-znc-an-irc-bouncer-on-an-ubuntu-vps
 - name: Check if znc is already installed
-  command: which znc 
+  command: which znc
   register: znc_check
   ignore_errors: yes
 
